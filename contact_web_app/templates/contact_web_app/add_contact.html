@@ -1,0 +1,104 @@
+{% extends "contact_web_app/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Add contact
+{% endblock title %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'contact_web_app/add_contact.css' %}"/>
+{% endblock styling %}
+
+{% block header_content1 %}
+{% endblock header_content1 %}
+
+{% block content %}
+    <h1>Add Contact</h1>
+    <div class="row style_div">
+        <form id="myForm" class="small-11 small-centered medium-7 medium-centered large-7 large-centered columns">
+            {% csrf_token %}
+            <div class="row style_div">
+                <div class="small-3 columns style_div">
+                    <label for="ip1" class="right inline">Name:</label>
+                </div>
+                <div class="small-7 columns style_div">
+                    <input id="ip1" type="text" name="name"/>
+                </div>
+                <div class="small-2 columns style_div"></div>
+            </div>
+            <div class="row style_div">
+                <div class="small-3 columns style_div">
+                    <label for="ip2" class="right inline">Phone No:</label>
+                </div>
+                <div class="small-7 columns style_div">
+                    <input id="ip2" type="text" name="phone_no"/>
+                </div>
+                <div class="small-2 columns style_div"></div>
+            </div>
+            <div class="row style_div">
+                <div class="small-3 columns style_div">
+                    <label for="ip3" class="right inline">Email:</label>
+                </div>
+                <div class="small-7 columns style_div">
+                    <input id="ip3" type="text" name="email"/>
+                </div>
+                <div class="small-2 columns style_div"></div>
+            </div>
+            <div class="row style_div">
+                <div class="small-3 columns style_div">
+                    <label for="ip4" class="right inline">Street:</label>
+                </div>
+                <div class="small-7 columns style_div">
+                    <input id="ip4" type="text" name="street"/>
+                </div>
+                <div class="small-2 columns style_div"></div>
+            </div>
+            <div class="row style_div">
+                <div class="small-3 columns style_div">
+                    <label for="ip5" class="right inline">City:</label>
+                </div>
+                <div class="small-7 columns style_div">
+                    <input id="ip5" type="text" name="city"/>
+                </div>
+                <div class="small-2 columns style_div"></div>
+            </div>
+            <div class="row style_div">
+                <div class="small-3 columns style_div">
+                    <label for="ip6" class="right inline">State:</label>
+                </div>
+                <div class="small-7 columns style_div">
+                    <input id="ip6" type="text" name="state"/>
+                </div>
+                <div class="small-2 columns style_div"></div>
+            </div>
+            <div class="row style_div">
+                <div class="small-3 columns style_div">
+                    <label for="ip7" class="right inline">Pin-code:</label>
+                </div>
+                <div class="small-7 columns style_div">
+                    <input id="ip7" type="number" name="pin_code"/>
+                </div>
+                <div class="small-2 columns style_div"></div>
+            </div>
+            <p><input id="btn1" class="button small" type="button" value="Submit"/>
+                <input id="btn2" class="button small" type="reset" value="Reset"/>
+            </p>
+            <p id="message"></p>
+        </form>
+    </div>
+    <div id="btn3" class="row small-3 small-centered columns style_div">
+        <a class="button small" href="{% url 'contact_web_app.views.contacts_home' %}">Home</a>
+    </div>
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'contact_web_app/modernizr.js' %}"></script>
+    <script src="{% static 'contact_web_app/jquery.js' %}"></script>
+    <script src="{% static 'contact_web_app/fastclick.js' %}"></script>
+    <script src="{% static 'contact_web_app/foundation.min.js' %}"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script src="{% static 'contact_web_app/add_contact.js' %}"></script>
+{% endblock javascript %}

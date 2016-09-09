@@ -1,0 +1,83 @@
+#headings_login{
+    margin-top:5px;
+    width:93%
+}
+.loginHeading{
+    padding-left: 3px;
+    text-align: left;
+    font-size: 30px;
+    font-style: normal;
+    color: #000;
+}
+.telephone{
+    padding-top: 20px;
+    color: #e31e24;
+}
+.subHeading{
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 16px;
+    text-align: left;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+.formDetails{
+    width: 93%;
+    padding-left: 16px;
+    padding-bottom: 20px;
+}
+.loginBlock{
+    position: relative;
+    left: 10px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.loginBlockHeading {
+    text-align: left;
+    font-size: 20px;
+    color: #333;
+}
+.loginSubHeading {
+    font-size: 12px;
+    color: #666;
+    text-align: left;
+}
+.logindetails{
+    padding-top: 20px;
+}
+.listStyle{
+    list-style-type: none;
+    padding-bottom: 20px;
+}
+.forgotPasswordStyle{
+    float: left;
+    font-size: 12px;
+    color: #09f;
+}
+.right{
+    float: right !important;
+}
+.customize-button.c-red {
+    background-color: rgba(227,30,36,.8);
+    color: #fff;
+}
+.registerBlock {
+    position: relative;
+    padding: 20px;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+    height: 373px
+}
+.registerDetails {
+    padding-top: 20px;
+}
+.reveal-modal .close-reveal-modal{
+    font-size: 1.5rem;
+    line-height: 1;
+    position: absolute;
+    right: .6875rem;
+    color: #aaa;
+    font-weight: 700;
+    cursor: pointer;
+}

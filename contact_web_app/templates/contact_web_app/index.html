@@ -1,0 +1,44 @@
+{% extends "contact_web_app/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Contacts Home
+{% endblock title %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'contact_web_app/index.css' %}"/>
+{% endblock styling %}
+
+{% block content %}
+    <h1>Menu:</h1>
+    <form action="{% url 'contact_web_app.views.add_contact_form' %}">
+        <input class="button small" type="submit" value="ADD CONTACT"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.delete_contact_form' %}">
+        <input class="button small" type="submit" value="DELETE CONTACT"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.get_contact_form' %}">
+        <input class="button small" type="submit" value="GET CONTACT"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.get_provider_form' %}">
+        <input class="button small" type="submit" value="GET PROVIDER"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.get_contacts_by_provider_form' %}">
+        <input class="button small" type="submit" value="GET CONTACTS BY PROVIDER"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.get_contacts_by_field_form' %}">
+        <input class="button small" type="submit" value="GET CONTACTS BY FIELD"/>
+    </form>
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'contact_web_app/modernizr.js' %}"></script>
+    <script src="{% static 'contact_web_app/jquery.js' %}"></script>
+    <script src="{% static 'contact_web_app/fastclick.js' %}"></script>
+    <script src="{% static 'contact_web_app/foundation.min.js' %}"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script src="{% static 'contact_web_app/index.js' %}"></script>
+{% endblock javascript %}

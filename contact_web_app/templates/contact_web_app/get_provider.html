@@ -1,0 +1,43 @@
+{% extends "contact_web_app/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Get provider
+{% endblock title %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'contact_web_app/get_provider.css' %}"/>
+{% endblock styling %}
+
+{% block content %}
+    <h1>Get Provider</h1>
+    <div class="row style_div">
+        <form id="myForm" class="small-11 small-centered medium-6 medium-centered large-6 large-centered columns">
+            {% csrf_token %}
+            <div class="row style_div">
+                <div class="small-3 columns style_div">
+                    <label for="phone" class="right inline">Phone No:</label>
+                </div>
+                <div class="small-7 columns style_div">
+                    <input id="phone" type="text" name="phone_no"/>
+                    <p id="message"></p>
+                </div>
+                <div class="small-2 columns style_div"></div>
+            </div>
+            <p><input id="btn1" class="button small" type="button" value="Submit"/></p>
+        </form>
+    </div>
+    <a id="btn2" class="button small" href="{% url 'contact_web_app.views.contacts_home' %}">Home</a>
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'contact_web_app/modernizr.js' %}"></script>
+    <script src="{% static 'contact_web_app/jquery.js' %}"></script>
+    <script src="{% static 'contact_web_app/fastclick.js' %}"></script>
+    <script src="{% static 'contact_web_app/foundation.min.js' %}"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script src="{% static 'contact_web_app/get_provider.js' %}"></script>
+{% endblock javascript %}

@@ -1,0 +1,50 @@
+body{
+    text-align: center;
+}
+header{
+    background: #ADDA90 url("phone_book.png") no-repeat center;
+    background-size: 150px 100px;
+    margin: -5px 0 -20px 0;
+    padding: 0 0 135px 0;
+}
+.header_user{
+    float: right;
+    margin: 0 20px 0 0;
+}
+#log_out:link, #log_out:visited {
+    color: black;
+}
+#log_out:hover, #log_out:active {
+    color: red;
+}
+#header_user{
+    float: right;
+    margin: 0 150px 0 0;
+}
+#header_user:link, #header_user:visited {
+    color: black;
+}
+#header_user:hover, #header_user:active {
+    color: red;
+}
+#container{
+    padding: 10px 0 213px 0;
+}
+div{
+    padding: 10px 0 0 0;
+}
+form{
+    background: #ADD8E6;
+    border: 1px solid black;
+    margin: 0 700px 40px 700px;
+    padding: 10px 0 70px 0;
+    border-radius: 40px 40px 40px 40px;
+    box-shadow: 10px 10px 10px;
+}
+#message{
+    color: red;
+}
+footer{
+    background: #ADDA90;
+    padding: 10px 0 10px 0;
+}

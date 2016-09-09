@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'contact_web_app/normalize.css' %}"/>
+    <link rel="stylesheet" href="{% static 'contact_web_app/foundation.css' %}"/>
+    <link rel="shortcut icon" href="{% static 'contact_web_app/phone_book_icon.png' %}"/>
+    <link rel="stylesheet" href="{% static 'contact_web_app/base.css' %}"/>
+    {% block styling %}
+    {% endblock styling %}
+</head>
+<body>
+    <header>
+        <h1>Telephone Directory</h1>
+        {% block header_content1 %}
+            {% if username %}
+                <span class="header_user">
+                    <a id="log_out" href="{% url 'contact_web_app.views.logout' %}">
+                        <img src="{% static 'contact_web_app/exit.png' %}" alt="Exit"/>
+                        <p>Log out</p>
+                    </a>
+                </span>
+                <span class="header_user">
+                    <img src="{% static 'contact_web_app/user.png' %}" alt="User"/>
+                    <p>{{ username }}</p>
+                </span>
+            {% else %}
+                <a id="header_user" href="" data-reveal-id="AccountModel">
+                    <img src="{% static 'contact_web_app/user.png' %}" alt="User"/>
+                    <p>Sign In</p>
+                </a>
+            {% endif %}
+        {% endblock header_content1 %}
+
+        {% block header_content2 %}
+            <div class="reveal-modal" id="AccountModel" data-reveal data-options="close_on_background_click:false;"
+                 aria-hidden="true" role="dialog">
+                <div class="row" id="headings_login">
+                    <div class="loginHeading">Welcome to <span class="telephone">Telephone Directory</span> !
+                    </div>
+                    <div class="subHeading">Login or Register Now</div>
+                </div>
+                <div class="row formDetails">
+                    <div class="large-6 small-12 medium-6 columns">
+                        <div class="loginBlock">
+                            <div>
+                                <span class="loginBlockHeading">
+                                    Log In
+                                    <span class="loginSubHeading"> (Existing Users)</span>
+                                </span>
+                            </div>
+                            <form id="myForm1" class="logindetails loginDetailsForm" data-abide="ajax">{% csrf_token %}
+                                <div class="email-field">
+                                    <input class="loginFormInput" type="email" name="email" required="" id="login-email"
+                                           pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z-.]+$" placeholder="Email Address">
+                                    <small class="error errorMsg" style="margin-bottom:0;background-color:#f0f0f0;color:red;margin-top:1px">An email
+                                        address is required.
+                                    </small>
+                                </div>
+                                <div class="password-field">
+                                    <input class="loginFormInput" type="password" name="password" required=""
+                                           pattern="^.{1,20}$" id="login-password" placeholder="Password">
+                                    <small class="error errorMsg" style="margin-bottom:0;background-color:#f0f0f0;color:red;margin-top:1px">Passwords must
+                                        have 1 to 20
+                                        characters.
+                                    </small>
+                                </div>
+                                <ul class="listStyle">
+                                    <li><a class="forgotPasswordStyle">Forgot
+                                        Password?</a>
+                                    </li>
+                                    <li class="right">
+                                        <button id="login" class="button customize-button c-red" type="submit">
+                                            LOG IN
+                                        </button>
+                                    </li>
+                                </ul>
+                            </form>
+                            <p id="message1"></p>
+                        </div>
+                    </div>
+                    <div class="large-6 small-12 medium-6 columns">
+                        <div class="registerBlock">
+                            <div class="loginBlockHeading">Register<span class="loginSubHeading"> (New Users)</span>
+                            </div>
+                            <form id="myForm2" class="registerDetails" data-abide="ajax">{% csrf_token %}
+                                <div class="name-field">
+                                    <input class="registerFormInput" id="signup-name" type="text" name="name" required=""
+                                           pattern="[a-zA-Z]+" placeholder="Name">
+                                    <small class="error errorMsg" style="margin-bottom:0;background-color:#f0f0f0;color:red;margin-top:1px">Name is
+                                        required and must be a string.
+                                    </small>
+                                </div>
+                                <div class="email-field">
+                                    <input class="registerFormInput" id="signup-email" name="email" required=""
+                                           pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z-.]+$" type="email"
+                                           placeholder="Email Address">
+                                    <small class="error errorMsg" style="margin-bottom:0;background-color:#f0f0f0;color:red;margin-top:1px">An email
+                                        address is required.
+                                    </small>
+                                </div>
+                                <div class="custom">
+                                    <input class="registerFormInput" id="signup-phoneNumber" name="phone_no" type="text"
+                                           required="" pattern="^\d{10}$" data-invalid="" placeholder="Phone Number">
+                                    <small class="error errorMsg" style="margin-bottom:0;background-color:#f0f0f0;color:red;margin-top:1px">Please enter a
+                                        valid phone number.
+                                    </small>
+                                </div>
+                                <div class="password-field">
+                                    <input class="registerFormInput" id="signup-password" type="password" name="password"
+                                           required="" pattern="^.{8,20}$" placeholder="Choose Password">
+                                    <small class="error errorMsg" style="margin-bottom:0;background-color:#f0f0f0;color:red;margin-top:1px">Passwords must
+                                        have 8 to 20 characters.
+                                    </small>
+                                </div>
+                                <button id="signup" class="button customize-button c-red" type="submit">CREATE ACCOUNT</button>
+                            </form>
+                            <p id="message2"></p>
+                        </div>
+                    </div>
+                </div>
+                <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+            </div>
+        {% endblock header_content2 %}
+    </header>
+    <div id="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <footer><h4>Copyrights@TeamYellow</h4></footer>
+    {% block javascript %}
+    {% endblock javascript %}
+</body>
+</html>

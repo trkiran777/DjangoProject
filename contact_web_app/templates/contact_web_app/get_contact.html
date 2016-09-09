@@ -1,0 +1,48 @@
+{% extends "contact_web_app/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Get contact
+{% endblock title %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'contact_web_app/get_contact.css' %}"/>
+{% endblock styling %}
+
+{% block content %}
+    <h1>Get Contact</h1>
+    <div class="row">
+        <form id="myForm" class="small-11 small-centered medium-6 medium-centered large-6 large-centered columns"
+              action="{% url 'contact_web_app.views.get_contact' %}" method="post" data-abide>
+            {% csrf_token %}
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="phone" class="right inline">Phone No:</label>
+                </div>
+                <div class="small-7 columns">
+                    <input id="phone" type="text" name="phone_no" pattern="\b[7-9]([0-9]){9}\b" required/>
+                    <small class="error" style="margin-bottom:0;background-color:#ADD8E6;color:red;margin-top:1px;font-size:14px">Required and should be valid!</small>
+                    <p class="message"></p>
+                </div>
+                <div class="small-2 columns"></div>
+            </div>
+            <p><input id="btn1" class="button small" type="submit" value="Submit"/></p>
+            {% if message %}
+                <p class="message">{{ message }}</p>
+            {% endif %}
+        </form>
+    </div>
+    <a class="button small" href="{% url 'contact_web_app.views.contacts_home' %}">Home</a>
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'contact_web_app/modernizr.js' %}"></script>
+    <script src="{% static 'contact_web_app/jquery.js' %}"></script>
+    <script src="{% static 'contact_web_app/fastclick.js' %}"></script>
+    <script src="{% static 'contact_web_app/foundation.min.js' %}"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script src="{% static 'contact_web_app/get_contact.js' %}"></script>
+{% endblock javascript %}

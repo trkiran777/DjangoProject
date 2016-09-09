@@ -1,0 +1,49 @@
+{% extends "contact_web_app/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    View Contacts
+{% endblock title %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'contact_web_app/view_contacts.css' %}"/>
+{% endblock styling %}
+
+{% block content %}
+    <h1>List of Contacts</h1>
+    {% if message %}
+        <p id="message">{{ message }}</p>
+    {% else %}
+        <div class="row">
+            <table id="width" class="small-12 small-centered medium-10 medium-centered large-10 large-centered columns"
+                   border="2">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone No.</th>
+                        <th>Email</th>
+                        <th>Street</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Pin-code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                    <tr>
+                        <td> {{contact.name}} </td>
+                        <td> {{contact.phone_no}} </td>
+                        <td> {{contact.email}} </td>
+                        <td> {{contact.street}} </td>
+                        <td> {{contact.city}} </td>
+                        <td> {{contact.state}} </td>
+                        <td> {{contact.pin_code}} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    <a class="button small"  href="{% url 'contact_web_app.views.contacts_home' %}">Home</a>
+{% endblock content %}

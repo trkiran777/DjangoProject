@@ -1,0 +1,62 @@
+{% extends "contact_web_app/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Get contacts by field
+{% endblock title %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'contact_web_app/get_contacts_by_field.css' %}"/>
+{% endblock styling %}
+
+{% block content %}
+    <h1>Get contacts by Field</h1>
+    <div class="row">
+        <form id="myForm" class="small-11 small-centered medium-6 medium-centered large-6 large-centered columns"
+              action="{% url 'contact_web_app.views.get_contacts_by_field' %}" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="ip1" class="right inline">String:</label>
+                </div>
+                <div class="small-6 columns">
+                    <input id="ip1" type="text" name="string" placeholder="Enter a string"/>
+                </div>
+                <div class="small-3 columns"></div>
+                </div>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="ip1" class="right inline">Field:</label>
+                </div>
+                <div class="small-6 columns">
+                    <select id="field" name="field">
+                        <option value="select a field" selected="selected">Select Field</option>
+                        <option value="name">NAME</option>
+                        <option value="phone_no">PHONE_NO</option>
+                        <option value="email">EMAIL</option>
+                        <option value="street">STREET</option>
+                        <option value="city">CITY</option>
+                        <option value="state">STATE</option>
+                        <option value="pin_code">PIN_CODE</option>
+                    </select>
+                </div>
+                <div class="small-3 columns"></div>
+            </div>
+            <input id="btn1" class="button small" type="button" value="Submit"/>
+            <p id="message"></p>
+        </form>
+    </div>
+    <a class="button small"  href="{% url 'contact_web_app.views.contacts_home' %}">Home</a>
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'contact_web_app/modernizr.js' %}"></script>
+    <script src="{% static 'contact_web_app/jquery.js' %}"></script>
+    <script src="{% static 'contact_web_app/fastclick.js' %}"></script>
+    <script src="{% static 'contact_web_app/foundation.min.js' %}"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script src="{% static 'contact_web_app/get_contacts_by_field.js' %}"></script>
+{% endblock javascript %}

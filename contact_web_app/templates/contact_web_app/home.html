@@ -1,0 +1,46 @@
+{% extends "contact_web_app/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'contact_web_app/home.css' %}"/>
+{% endblock styling %}
+
+{% block header_content %}
+    <span class="header_user">
+        <a id="log_out" href="{% url 'contact_web_app.views.logout' %}">
+            <img src="{% static 'contact_web_app/exit.png' %}" alt="Exit"/>
+            <p>Log out</p>
+        </a>
+    </span>
+    <span class="header_user">
+        <img src="{% static 'contact_web_app/user.png' %}" alt="User"/>
+        <p>{{ username }}</p>
+    </span>
+{% endblock header_content %}
+
+{% block content %}
+    <h1>Menu:</h1>
+    <form action="{% url 'contact_web_app.views.add_contact_form' %}">
+        <input class="button small" type="submit" value="ADD CONTACT"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.delete_contact_form' %}">
+        <input class="button small" type="submit" value="DELETE CONTACT"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.get_contact_form' %}">
+        <input class="button small" type="submit" value="GET CONTACT"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.get_provider_form' %}">
+        <input class="button small" type="submit" value="GET PROVIDER"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.get_contacts_by_provider_form' %}">
+        <input class="button small" type="submit" value="GET CONTACTS BY PROVIDER"/>
+    </form>
+    <form action="{% url 'contact_web_app.views.get_contacts_by_field_form' %}">
+        <input class="button small" type="submit" value="GET CONTACTS BY FIELD"/>
+    </form>
+{% endblock content %}
